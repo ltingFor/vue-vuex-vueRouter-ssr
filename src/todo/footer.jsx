@@ -3,7 +3,7 @@ import '../assets/styles/footer.styl'
 export default {
     data() {
         return {
-            author: 'Yifans_Z',
+            author: 'TingLi_Z',
             origin: 'Jokcy/vue-todo-tech'
         }
     },
