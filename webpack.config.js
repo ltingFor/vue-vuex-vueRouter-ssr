@@ -72,12 +72,19 @@ if (isDev) {
         new webpack.NoEmitOnErrorsPlugin()
     )
 } else {
+    config.entry={
+      app:path.join(__dirname, 'src/index.js'),  
+      vendor:['vue']
+    } 
+    /*chunkhash是在build的时候用，每个chunk都有单独的hash值，互相不依赖，且只有内容有变化的时候才会重新hash，但是
+    hash是所有的chunk共用一个hash，且每次都会重新生成hash
+    */
     config.output.filename = 'bundle.[chunkhash:8].js'
     config.module.rules.push({
         test: /\.styl$/,
         use: ExtractPlugin.extract({
             fallback: 'style-loader',
-            user: [
+            use: [
                 "css-loader",
                 {
                     loader: "postcss-loader",
@@ -89,8 +96,17 @@ if (isDev) {
             ]
         })
     })
-    config.plugins.push(
-        new ExtractPlugin('styles.[contentHash:8].css')
+    //name:'runtime'  表示
+    config.plugins.push(//contentHash 是根据内容进行hash
+        new ExtractPlugin('styles.[contentHash:8].css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor',
+            filename: "vendor.[hash:8].js",
+            minChunks: Infinity,
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'runtime'
+        })
     )
 }
 

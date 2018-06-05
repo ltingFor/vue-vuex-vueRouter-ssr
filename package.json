@@ -1,11 +1,11 @@
 {
-    "name": "todo-by-vue-webpack",
+    "name": "vue-ssr-tech",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+        "build": "cross-env NODE_ENV=production webpack --colors --config webpack.config.js",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
     },
     "repository": {
