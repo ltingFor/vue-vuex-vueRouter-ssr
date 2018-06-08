@@ -42,7 +42,7 @@ const config = {
         new HTMLPlugin()
     ]
 }
-
+//通过配置了webpack.DefinePlugin，那么这里面的标识就相当于全局变量，你的业务代码可以直接使用配置的标识
 if (isDev) {
     config.module.rules.push({
         test: /\.styl$/,
@@ -96,7 +96,8 @@ if (isDev) {
             ]
         })
     })
-    //name:'runtime'  表示
+    //name:'runtime'  表示将webpack等相关的文件打包到一个文件中，使用的名字要是entry中没有声明过的
+    //一般常用的是runtime，为了解决每次修改vendor的contentHash值会变化时候，长缓存失效的问题
     config.plugins.push(//contentHash 是根据内容进行hash
         new ExtractPlugin('styles.[contentHash:8].css'),
         new webpack.optimize.CommonsChunkPlugin({
