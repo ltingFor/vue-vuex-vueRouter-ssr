@@ -29,48 +29,48 @@
     let id = 0
 
     export default {
-        data() {
-            return {
-                todos: [],
-                filter: 'all'
-            }
-        },
-        components: {
-            Item,
-            Tabs,
-        },
-        computed: {
-            filteredTodos() {
-                if (this.filter === 'all') {
-                    return this.todos
-                }
-                const completed = this.filter === 'completed'
-                return this.todos.filter(todo => completed === todo.completed)
-            }
-        },
-        methods: {
-            addTodo(e) {
-                const content = e.target.value.trim()
-                if (content == '') {
-                    return
-                }
-                this.todos.unshift({
-                    id: id++,
-                    content: content,
-                    completed: false,
-                })
-                e.target.value = ''
-            },
-            deleteTodo(id) {
-                this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
-            },
-            toggleFilter(state) {
-                this.filter = state
-            },
-            clearAllCompleted() {
-                this.todos = this.todos.filter(todo => !todo.completed)
-            }
+      data () {
+        return {
+          todos: [],
+          filter: 'all'
         }
+      },
+      components: {
+        Item,
+        Tabs
+      },
+      computed: {
+        filteredTodos () {
+          if (this.filter === 'all') {
+            return this.todos
+          }
+          const completed = this.filter === 'completed'
+          return this.todos.filter(todo => completed === todo.completed)
+        }
+      },
+      methods: {
+        addTodo (e) {
+          const content = e.target.value.trim()
+          if (content === '') {
+            return
+          }
+          this.todos.unshift({
+            id: id++,
+            content: content,
+            completed: false
+          })
+          e.target.value = ''
+        },
+        deleteTodo (id) {
+          this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
+        },
+        toggleFilter (state) {
+          this.filter = state
+        },
+        clearAllCompleted () {
+          this.todos = this.todos.filter(todo => !todo.completed)
+        }
+      }
     }
 </script>
 

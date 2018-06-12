@@ -11,7 +11,14 @@ const config = {
         path: path.join(__dirname, '../dist')
     },
     module: {
-        rules: [{
+        rules: [
+            {
+                enforce: "pre",
+                test: /\.(vue|js|jsx)$/,
+                loader: 'eslint-loader',
+                exclude:'/node_modules'
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options:creatVueLoaderOptions(isDev)
