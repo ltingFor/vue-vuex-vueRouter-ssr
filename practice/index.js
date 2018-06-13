@@ -1,2 +1,6 @@
 // import './instance'
-import './lifecyle'
+// import './lifecyle'
+// import './data-bind'
+// import './computed'
+// import './derective'
+import './components'
