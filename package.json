@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/imzyf/todo-by-vue-webpack#readme",
   "dependencies": {
-    "vue": "2.5.13"
+    "vue": "2.5.13",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "axios": "^0.18.0",
