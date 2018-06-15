@@ -15,10 +15,12 @@ const definedPlugins = [
             NODE_ENV: isDev ? '"development"' : '"production"'
         }
     }),
-    new HTMLPlugin()
+    new HTMLPlugin({
+      template: path.join(__dirname, 'template.html')
+    })
 ]
 
-let config 
+let config
 const devServer = {
         port: 8000,
         host: '0.0.0.0',
@@ -69,7 +71,7 @@ if (isDev) {
     */
     config = merge(common,{
         entry:{
-            app:path.join(__dirname, '../client/index.js'),  
+            app:path.join(__dirname, '../client/index.js'),
             vendor:['vue']
         },
         output:{
