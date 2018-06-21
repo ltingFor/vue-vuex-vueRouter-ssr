@@ -9,6 +9,23 @@ export default () => {
     mode: 'history',
     // base: '/base/',
     linkActiveClass: 'active-link',
-    linkExactActiveClass: 'exact-active-link'
+    linkExactActiveClass: 'exact-active-link',
+    scrollBehavior (to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { x: 0, y: 0 }
+      }
+    },
+    fallback: true
+    // parseQuery (Json) {
+    //   console.log('Json', Json)
+    // },
+    // stringifyQuery (Obj) {
+    //   Obj.a = 123
+    //   Obj.b = 456
+    //   console.log(Obj)
+    // }
+
   })
 }

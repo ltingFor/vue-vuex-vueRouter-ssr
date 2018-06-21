@@ -15,6 +15,24 @@ Vue.use(VueRouter)
 
 const router = creatRouter()
 
+// 注册全局的导航守卫
+router.beforeEach((to, from, next) => { // 可用来做一些登录校验等
+  /* if (to.fullPath === '/app') {
+    next('/login')
+  } else {
+    next()
+  } */
+  console.log('before each invoked')
+  next()
+})
+router.beforeResolve((to, from, next) => {
+  console.log('before Resolve invoked')
+  next()
+})
+router.afterEach((to, from) => { // 已经执行完成
+  console.log('after each invoked')
+})
+
 new Vue({
   router,
   render: (h) => h(App)

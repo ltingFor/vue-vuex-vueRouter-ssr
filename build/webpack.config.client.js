@@ -27,6 +27,9 @@ const devServer = {
         overlay: {
             errors: true
         },
+        historyApiFallback: {
+          index: '/public/index.html'//和output中的publicPath相关，得加上基路径
+        },
         hot: true
     }
 
